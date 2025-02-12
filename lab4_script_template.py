@@ -12,10 +12,9 @@ import re
 
 def main():
     log_file = get_log_file_path_from_cmd_line()
-    regex = r'SSHD'
-    filter_log_by_regex(log_file,regex,ignore_case=True,print_summary)
+    regex = r'sshd'
+    filter_log_by_regex(log_file,regex, ignore_case=True, print_summary =True, print_records=True)
     #regex = r'invalid user.*220.195.35.40'
-    filter_log_by_regex(log_file,regex,ignore_case=True,print_summary)
 
     port_traffic = tally_port_traffic(log_file)
     print(port_traffic)

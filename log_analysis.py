@@ -41,18 +41,21 @@ def filter_log_by_regex(log_file, regex, ignore_case=True, print_summary=False, 
     else:
         search_flags = 0
         sensitive = "case sensitive"
-
-
-        with open(log_file,'r')as file:
-            for record in file:
-                match = re.search(regex,record,search_flags)
-                if match:
+    with open(log_file,'r')as file:
+         for record in file: #iterate through the lines in the file
+            match = re.search(regex,record,search_flags)
+            if match:
                     filtered_records.append(record.strip())
-                    if match.lastindex !=0:
-                        filetered_groups.append(match.groups())
+    if print_records: 
+         for record in filtered_records:
+              print(rec)
+    if match.lastindex !=0:
+                        filtered_groups.append(match.groups())                
     if print_records:
         for rec in filtered_records:
             print(rec)
+
+
     if print_summary:
-        print(f'The log file contains' {len(filtered_records)} records, that are {senstive}, matching regex:\n r"")
+        print(f'The log file contains {len(filtered_records)} records, that are {sensitive}, matching regex: r"{regex}"')
     return (filtered_records, filtered_groups)
