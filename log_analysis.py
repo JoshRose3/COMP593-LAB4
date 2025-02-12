@@ -57,5 +57,5 @@ def filter_log_by_regex(log_file, regex, ignore_case=True, print_summary=False, 
 
 
     if print_summary:
-        print(f'The log file contains {len(filtered_records)} records, that are {sensitive}, matching regex: r"{regex}"')
+        print(f'The log file contains {len(filtered_records)} records, that are {sensitive}, matching regex:\n \r"{regex}"')
     return (filtered_records, filtered_groups)
