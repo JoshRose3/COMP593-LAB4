@@ -1,30 +1,19 @@
-import sys
-import os
-import re
-
-def main():
-    log_file = get_log_file_path_from_cmd_line()
-    regex = r'SSHD'
-    filter_log_by_regex(log_file,regex,ignore_case=True,print_summary)
-    #regex = r'invalid user.*220.195.35.40'
-    filter_log_by_regex(log_file,regex,ignore_case=True,print_summary)
 
 import re
 import sys
 import os
 # TODO: Step 3
 def get_log_file_path_from_cmd_line():
-    if len(sys.arg)>1:
-
-        filename = sys.argv[1]
-        if os.path.isfile(filename)
+    if len(sys.argv)>1: #checks that there are enough arguments
+         filename = sys.argv[1]
+         if os.path.isfile(filename):
             return os.path.abspath(filename)
-        else:
+         else:
             print("sorry this is not a file")
-        exit(0)
+            exit(0)
     else:
         print("insufficient arguments, please include filename")
-    exit(0)   
+        exit(0)   
     return
 
 
