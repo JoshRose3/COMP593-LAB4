@@ -1,7 +1,12 @@
+'''
 
+
+'''
+#imports
 import re
 import sys
 import os
+
 # TODO: Step 3
 def get_log_file_path_from_cmd_line():
     if len(sys.argv)>1: #checks that there are enough arguments
