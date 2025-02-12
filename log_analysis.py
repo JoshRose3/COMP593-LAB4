@@ -50,7 +50,11 @@ def filter_log_by_regex(log_file, regex, ignore_case=True, print_summary=False, 
          for record in file: #iterate through the lines in the file
             match = re.search(regex,record,search_flags)
             if match:
-                    filtered_records.append(record.strip())
+                    filtered_records.append(record.strip()) #returns the entire record that matches
+                    if match.lastindex !=0:
+                         filtered_groups.append(match.groups())
+
+                         
     if print_records: 
          for record in filtered_records:
               print(rec)

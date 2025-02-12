@@ -4,6 +4,7 @@
 
 '''
 
+import re
 from log_analysis import get_log_file_path_from_cmd_line, filter_log_by_regex
 
 def main():
@@ -17,11 +18,16 @@ def main():
     
     regex3 = 'error'
     filter_log_by_regex(log_file, regex2, ignore_case=True, print_summary=True, print_records=True)
+   
+    #step 8
     port_traffic = tally_port_traffic(log_file)
     print(port_traffic)
 
+    #step 10
     for port, count in port_traffic.items():
         if (count >= 100):
+            print(f' Port {port} has traffic greater than or equal to 100, it is {count}')
+
             generate_port_traffic_report(log_file,port)
 
 
@@ -31,7 +37,7 @@ def tally_port_traffic(log_file):
     port_traffic = {}
 
     with open (log_file, 'r') as file:
-        for record in file:
+        for record in file: #iterate through line by line
             match = re.search(r"DPT=(.[^ ]*)",record)
             if match:
                 port = match.group(1)
@@ -44,8 +50,9 @@ def tally_port_traffic(log_file):
 def generate_port_traffic_report(log_file, port_number):
     
     
-    regex = ''
+    regex = r'^(.{6}) (.*) myth.*SRC=(.*?) DST=(.*?) .*SPT=(.*?) '+ f'DPT=({port_number})'
     traffic_records = filter_log_by_regex(log_file,regex,)[1]
+    print(traffic_records)
 
     traffic_df = pd.DataFrame(traffic_records)
 
