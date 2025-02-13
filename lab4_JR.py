@@ -93,7 +93,6 @@ def generate_invalid_user_report(log_file):
 
     
 
-    return
 
   # TODO: Step 12
 def generate_source_ip_log(log_file, ip_address):
@@ -113,3 +112,4 @@ def generate_source_ip_log(log_file, ip_address):
 
 if __name__ == '__main__':
     main()
+
