@@ -33,6 +33,9 @@ def main():
             print(f' Port {port} has traffic greater than or equal to 100, it is {count}')
             generate_port_traffic_report(log_file,port)
 
+    #step 11
+    generate_invalid_user_report(get_log_file_path_from_cmd_line())
+  
 
 
 # TODO: Step 8
@@ -65,6 +68,27 @@ def generate_port_traffic_report(log_file, port_number):
 
 # TODO: Step 11
 def generate_invalid_user_report(log_file):
+
+    
+    regex = r'(\w{3})\s+(\d{1,2}) (\d{2}:\d{2}:\d{2}).*Invalid user (\S+) from ([\d.]+)'
+    records = filter_log_by_regex(log_file, regex)[1]
+
+    if not records:
+        print("\n No invalid user attempts found!")
+        return  
+
+    
+    formatted_records = [(f"{day}-{month}", time, user, ip) for month, day, time, user, ip in records]
+
+    
+    invalid_user_df = pd.DataFrame(formatted_records, columns=["Date", "Time", "Username", "IP Address"])
+    
+   
+    invalid_user_df.to_csv("invalid_users.csv", index=False)
+
+    print("invalid_users.csv generated successfully!")
+
+
     return
 
 # TODO: Step 12
