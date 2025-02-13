@@ -36,6 +36,8 @@ def main():
     #step 11
     generate_invalid_user_report(get_log_file_path_from_cmd_line())
   
+    #step 12
+    generate_source_ip_log(log_file, "220.195.35.40") 
 
 
 # TODO: Step 8
@@ -87,12 +89,26 @@ def generate_invalid_user_report(log_file):
     invalid_user_df.to_csv("invalid_users.csv", index=False)
 
     print("invalid_users.csv generated successfully!")
+    
 
+    
 
     return
 
-# TODO: Step 12
+  # TODO: Step 12
 def generate_source_ip_log(log_file, ip_address):
+    regex = rf'.*SRC={ip_address}.*'
+    records = filter_log_by_regex(log_file, regex)[0]
+
+    if not records:
+        print(f"\n No records found for source IP {ip_address}!")
+        return  
+
+    filename = f"source_ip_{ip_address.replace('.', '_')}.log"
+    with open(filename, "w") as file:
+        file.write("\n".join(records) + "\n")
+
+    print(f"{filename} generated successfully!")
     return
 
 if __name__ == '__main__':
