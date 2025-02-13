@@ -18,6 +18,10 @@ def main():
     
     regex3 = 'error'
     filter_log_by_regex(log_file, regex3, ignore_case=True, print_summary=True, print_records=True)
+
+    regex4 = r'Pam'
+    filter_log_by_regex(log_file, regex4, ignore_case=True, print_summary=True, print_records=True)
+    
    
     #step 8
     port_traffic = tally_port_traffic(log_file)
