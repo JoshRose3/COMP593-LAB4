@@ -7,7 +7,7 @@
         
     
         {
-            "name": "Log File Debugger",
+            "name": "Log File Debuger",
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",

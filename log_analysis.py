@@ -41,7 +41,7 @@ def filter_log_by_regex(log_file, regex, ignore_case=True, print_summary=False, 
     filtered_groups = []
 
     if ignore_case:
-        search_flag = re.IGNORECASE
+        search_flags = re.IGNORECASE
         sensitive = "case insensitive"
     else:
         search_flags = 0
@@ -56,13 +56,8 @@ def filter_log_by_regex(log_file, regex, ignore_case=True, print_summary=False, 
 
                          
     if print_records: 
-         for record in filtered_records:
+         for rec in filtered_records:
               print(rec)
-    if match.lastindex !=0:
-                        filtered_groups.append(match.groups())                
-    if print_records:
-        for rec in filtered_records:
-            print(rec)
 
 
     if print_summary:
