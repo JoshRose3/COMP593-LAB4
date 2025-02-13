@@ -51,12 +51,11 @@ def generate_port_traffic_report(log_file, port_number):
     
     regex = r'^(.{6}) (.*) myth.*SRC=(.*?) DST=(.*?) .*SPT=(.*?) '+ f'DPT=({port_number})'
     traffic_records = filter_log_by_regex(log_file,regex)[1]
-    print(traffic_records)
     
     traffic_df = pd.DataFrame(traffic_records)
 
-    traffic_df.to_csv(f'destination_port_{port_number}_report.csv',header=traffic_header,index=False)
     traffic_header = ('Date', 'Time', 'Source IP Address', 'Destination IP Address', 'Source Port', 'Destination Port' )
+    traffic_df.to_csv(f'destination_port_{port_number}_report.csv',header=traffic_header, index=False)
     
     return
 
