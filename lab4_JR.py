@@ -1,5 +1,27 @@
 '''
-#add docstring here
+lab4_JR.py  
+This file contains the code for Lab 4, written by Josh Rose.  
+It processes a gateway log file to analyze SSHD attempts, invalid users, errors, 
+port traffic, and source IP logs. It also generates reports based on the findings.
+
+Functions:
+
+    - main(): Runs the script and calls other functions to analyze the log file.
+    - get_log_file_path_from_cmd_line(): Gets the log file path from the command line.
+    - filter_log_by_regex(log_file, regex, ignore_case, print_summary, print_records): 
+      Searches the log file for records matching a regex pattern.
+    - tally_port_traffic(log_file): Counts how many times each destination port appears in the log.
+    - generate_port_traffic_report(log_file, port_number): Creates a CSV file showing traffic for a specific port.
+    - generate_invalid_user_report(log_file): Creates a CSV file with details about invalid user login attempts.
+    - generate_source_ip_log(log_file, ip_address): Creates a log file with all records related to a specific source IP.
+
+Example usage:
+    - Run the script in the terminal with a log file as an argument.
+    - It will automatically process the log and generate reports.
+
+#This program is strictly my own work. Any material beyond course
+#  learning materials that is taken from the Web or other sources 
+# is properly cited, giving credit to the original author(s).
 
 
 '''

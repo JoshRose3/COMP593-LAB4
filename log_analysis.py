@@ -1,5 +1,20 @@
 '''
+log_analysis.py  
+This script is used to process log files by searching for specific patterns using regex.  
+It helps find and filter records based on given criteria.
 
+Functions:
+
+    - get_log_file_path_from_cmd_line(): Gets the log file path from the command line.
+    - filter_log_by_regex(log_file, regex, ignore_case, print_summary, print_records): 
+      Searches a log file for lines that match a regex pattern and can print results.
+
+Example usage:
+    - Run the script with a log file as an argument.
+    - Use filter_log_by_regex() to find specific patterns in the log.
+#This program is strictly my own work. Any material beyond course
+#  learning materials that is taken from the Web or other sources 
+# is properly cited, giving credit to the original author(s).
 
 '''
 #imports
